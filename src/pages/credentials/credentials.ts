@@ -5,18 +5,20 @@ import { Storage } from '@ionic/storage';
  
 @Component({
   selector: 'Credentials',
-  templateUrl: 'Credentials.html'
+  templateUrl: 'credentials.html'
 })
 export class Credentials {
-  data: any;
-  
-  constructor(public navCtrl: NavController, public storage: Storage) { }
-  save(){
-    this.navCtrl.push(HomePage, {
-      data1: this.data
-    })
+  data1: any;
+  data2: any;
+  data3: any;
 
+  constructor(public navCtrl: NavController, public storage: Storage) { }
+
+  save(){
     // save data in localStorage, I don't need to send it to HomePage
-    this.storage.set('test',this.data);
+    let dataObject = [this.data1, this.data2, this.data3];
+    this.storage.set('credentials',dataObject);
+    // go to home
+    this.navCtrl.push(HomePage)
   }
 }

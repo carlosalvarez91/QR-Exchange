@@ -14,10 +14,8 @@ export class HomePage {
   scannedCode = null;
  
   constructor(private barcodeScanner: BarcodeScanner, public navCtrl: NavController, public navParams: NavParams , public storage: Storage) {
-    this.createdCode = this.navParams.get('data1');
     //Get data from LocalStorage, I don't need to get it from credentials.
-    this.storage.get('test').then((val) => {
-          console.log('Your age is', val);
+    this.storage.get('credentials').then((val) => {
           this.createdCode = val;
     });
    }
